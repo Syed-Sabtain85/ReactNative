@@ -8,7 +8,7 @@ import {
   View,
   SafeAreaView
 } from 'react-native'
-import backGround from '../../assets/images/coffee.jpg'
+import backGround from '../assets/images/coffee.jpg'
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
 
         {/* Bottom Section */}
         <View style={styles.bottom}>
-          <Link href="/explore" asChild>
+          <Link href="/contact" asChild>
             <Pressable style={styles.btn}>
               <Text style={styles.link}>Go to explore</Text>
             </Pressable>
