@@ -21,7 +21,7 @@ export default function RootLayout() {
       }}>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="contact" options={{ headerShown: true, title: 'Contact Us' }} />
-        <Stack.Screen name="menu" options={{ headerShown: true, title: 'Menu' }} />
+        <Stack.Screen name="menu" options={{ headerShown: false, title: 'Menu' }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
         <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
       </Stack>

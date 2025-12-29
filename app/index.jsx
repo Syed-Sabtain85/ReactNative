@@ -5,34 +5,38 @@ import {
   Pressable,
   StyleSheet,
   Text,
-  View,
-  SafeAreaView
+  View
 } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import backGround from '../assets/images/coffee.jpg'
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.safe}>
+    <View style={styles.safe}>
       <ImageBackground
         source={backGround}
-        style={styles.image}
-        blurRadius={1}
-      >
+        style={styles.image}>
+
         <View style={styles.top}>
-          <Text style={styles.text}>Welcome Back!</Text>
+          <Text style={styles.text}>WeLcOmE bAcK!</Text>
         </View>
 
-        {/* Bottom Section */}
         <View style={styles.bottom}>
+          <Link href="/menu" asChild>
+            <Pressable style={styles.btn}>
+              <Text style={styles.link}>MeNu</Text>
+            </Pressable>
+          </Link>
+
           <Link href="/contact" asChild>
             <Pressable style={styles.btn}>
-              <Text style={styles.link}>Go to explore</Text>
+              <Text style={styles.link}>CoNtAcT uS</Text>
             </Pressable>
           </Link>
         </View>
 
       </ImageBackground>
-    </SafeAreaView>
+    </View>
   )
 }
 
@@ -56,18 +60,21 @@ const styles = StyleSheet.create({
     color: '#2d2d2d',
   },
   bottom: {
-     marginTop: 'auto',
+    flexDirection: 'row',
+    marginTop: 'auto',
+    justifyContent: 'space-between',
     marginBottom: 50,
     alignItems: 'center',
   },
   btn: {
-    width: 220,
+    width: '48%',
     height: 60,
-    borderRadius: 30,
-    backgroundColor: '#260e0eff',
+    borderRadius: 20,
+    backgroundColor: '#335227ff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   link: {
     fontSize: 20,
     fontWeight: 'bold',
