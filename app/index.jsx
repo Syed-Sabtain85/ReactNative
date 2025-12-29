@@ -1,14 +1,14 @@
-import { ImageBackground } from 'expo-image'
-import { Link } from 'expo-router'
-import React from 'react'
+import { ImageBackground } from 'expo-image';
+import { Link } from 'expo-router';
+import React from 'react';
 import {
   Pressable,
   StyleSheet,
   Text,
   View
-} from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import backGround from '../assets/images/coffee.jpg'
+} from 'react-native';
+import Toast from 'react-native-toast-message';
+import backGround from '../assets/images/coffee.jpg';
 
 const App = () => {
   return (
@@ -34,7 +34,6 @@ const App = () => {
             </Pressable>
           </Link>
         </View>
-
       </ImageBackground>
     </View>
   )

@@ -1,18 +1,47 @@
-import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
 
 const cafes = [
-  { name: 'Jacks Cafe', loc: '+1xxxxxxxxx, Los Angeles' },
-  { name: 'Brewed Awakenings', loc: '+1xxxxxxxxx, South East America' },
-  { name: 'The Grind House', loc: '+1xxxxxxxxx, North America' },
-  { name: 'The Coffee Bean', loc: '+1xxxxxxxxx, California' },
-]
+  { name: 'Jacks Cafe', phone: '+1234567890', location: 'Los Angeles' },
+  { name: 'Brewed Awakenings', phone: '+1234567891', location: 'South East America' },
+  { name: 'The Grind House', phone: '+1234567892', location: 'North America' },
+  { name: 'The Coffee Bean', phone: '+1230987456', location: 'California' },
+  { name: 'The Coffee Bean', phone: '+1234567893', location: 'California' },
+  { name: 'The Coffee Bean', phone: '+1234567893', location: 'California' },
+];
+
+const dialNumber = async (phone) => {
+  const url = `tel:${phone}`;
+  const supported = await Linking.canOpenURL(url);
+
+  if (supported) {
+    Toast.show({
+      type: 'success',
+      text1: `Opening dialer for ${phone}`,
+      position: 'bottom',
+      visibilityTime: 1500,
+    });
+    Linking.openURL(url);
+  } else {
+    Toast.show({
+      type: 'error',
+      text1: 'Dialer not supported',
+      position: 'bottom',
+      visibilityTime: 3000,
+    });
+  }
+};
+
+
 
 const Explore = () => {
   return (
     <SafeAreaView style={styles.safe}>
+    
       <ScrollView contentContainerStyle={styles.container}>
-        
+
         {/* Header */}
         <Text style={styles.text}>Explore Cafes ☕</Text>
         <Text style={styles.paragraph}>
@@ -23,12 +52,34 @@ const Explore = () => {
         {cafes.map((item, index) => (
           <View key={index} style={styles.card}>
             <Text style={styles.name}>{item.name}</Text>
-            <Text style={styles.loc}>{item.loc}</Text>
+            <Pressable
+              onPress={() => dialNumber(item.phone)}
+            >
+              <Text style={[styles.loc, { textDecorationLine: 'underline' }]}>
+                📞 {item.phone}
+              </Text>
+            </Pressable>
+            <Text style={styles.loc}>{item.location}</Text>
+
           </View>
         ))}
 
       </ScrollView>
-    </SafeAreaView>
+        <Toast
+        config={{
+          success: (internalState) => (
+            <View style={{width: '90%', height: 60, backgroundColor: 'rgba(75, 181, 67, 1)', justifyContent: 'center', paddingHorizontal: 16, borderRadius: 8}}>
+              <Text style={{ color: '#fff', fontWeight: 'bold' }}>{internalState.text1}</Text>
+            </View>
+          ),
+          error: (internalState) => (
+            <View style={{ width: '90%', height: 60, backgroundColor: '#bf2e2eff', justifyContent: 'center', paddingHorizontal: 16, borderRadius: 8 }}>
+              <Text style={{ color: '#fff', fontWeight: 'bold' }}>{internalState.text1}</Text>
+            </View>
+          ),
+        }}
+      />
+    </SafeAreaView >
   )
 }
 

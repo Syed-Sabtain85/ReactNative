@@ -17,8 +17,11 @@ const MenuItems = () => {
   const colorScheme = Appearance.getColorScheme()
   const theme = colorScheme === 'dark' ? Colors.dark : Colors.light
   const styles = createStyles(theme)
-  const footer = <Text style={{ fontSize: 18, textAlign: 'center', marginHorizontal: 'auto' }}>Thank you for visiting!</Text>
-  const emptyList = <Text style={{ fontSize: 18, textAlign: 'center', marginHorizontal: 'auto' }}>No items available</Text>
+  const footer = <Text style={{ fontSize: 18, textAlign: 'center', marginHorizontal: 'auto', marginTop: 'auto' }}>
+    ThanK yOu FoR vIsItInG!
+  </Text>
+  const emptyList =
+    <Text style={{ fontSize: 18, textAlign: 'center', marginHorizontal: 'auto' }}>No items available</Text>
   return (
 
     <SafeAreaView style={styles.container}>
@@ -84,7 +87,9 @@ function createStyles(theme) {
     separator: {
       height: 1,
       backgroundColor: theme.text,
-      marginBottom: 10
+      marginBottom: 10,
+      width: '65%',
+      alignSelf: 'center',
     },
     itemRow: {
       flexDirection: 'row',
@@ -101,7 +106,7 @@ function createStyles(theme) {
       width: 90,
       height: 90,
       borderRadius: 12,
-      }
+    }
 
   })
 }
